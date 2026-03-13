@@ -101,7 +101,7 @@ function DifficultyBadge({ level }) {
 // ─── Spot card ──────────────────────────────────────────────────────────────
 function SpotCard({ spot }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:si�dow-md transition-shadow duration-200 overflow-hidden group cursor-pointer">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group cursor-pointer">
       {/* Card header */}
       <div className="bg-gradient-to-br from-ocean-500 to-ocean-700 p-6 flex items-center justify-between">
         <span className="text-5xl">{spot.image}</span>
