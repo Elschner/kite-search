@@ -156,7 +156,7 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-beige-50">
 
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -179,9 +179,9 @@ export default function Home() {
       </nav>
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-b from-ocean-900 via-ocean-800 to-ocean-600 text-white py-24 px-4">
+      <section className="bg-gradient-to-b from-beige-300 via-beige-200 to-beige-50 text-gray-900 py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 text-sm mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur border border-beige-300 rounded-full px-4 py-1.5 text-sm mb-6 text-gray-700">
             <span>🌍</span>
             <span>The world's most complete kite surfing directory</span>
           </div>
@@ -189,10 +189,10 @@ export default function Home() {
           <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 leading-tight tracking-tight">
             Find Your Perfect
             <br />
-            <span className="text-sand-300">Kite Spot</span>
+            <span className="text-ocean-600">Kite Spot</span>
           </h1>
 
-          <p className="text-xl text-ocean-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             Discover 500+ kite surfing spots across 80+ countries. Search by wind season,
             difficulty, and water type — then get out there.
           </p>
@@ -216,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* ── Stats bar ───────────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-gray-100">
+      <section className="bg-beige-100 border-b border-beige-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           {STATS.map((s) => (
             <div key={s.label}>
