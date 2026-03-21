@@ -1,76 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-// ─── Sample spot data (we'll expand this in Phase 2) ───────────────────────
-const FEATURED_SPOTS = [
-  {
-    id: 1,
-    name: "Tarifa",
-    country: "Spain",
-    flag: "🇪🇸",
-    difficulty: "All levels",
-    windSeason: "Apr – Oct",
-    description: "Europe's kite surfing capital. Consistent Levante and Poniente winds make this a year-round destination for riders of every level.",
-    tags: ["Flat water", "Waves", "Wind reliable"],
-    image: "🌊",
-  },
-  {
-    id: 2,
-    name: "Cape Town",
-    country: "South Africa",
-    flag: "🇿🇦",
-    difficulty: "Intermediate+",
-    windSeason: "Nov – Mar",
-    description: "Bloubergstrand offers world-class conditions with the iconic Table Mountain backdrop. Strong Cape Doctor winds guaranteed.",
-    tags: ["Waves", "Strong winds", "Scenic"],
-    image: "🏔️",
-  },
-  {
-    id: 3,
-    name: "Cabarete",
-    country: "Dominican Republic",
-    flag: "🇩🇴",
-    difficulty: "Beginner friendly",
-    windSeason: "Jun – Aug",
-    description: "Warm Caribbean waters, thermal afternoon winds, and a vibrant kite beach community. One of the best learning destinations in the world.",
-    tags: ["Flat water", "Warm water", "Schools nearby"],
-    image: "🏖️",
-  },
-  {
-    id: 4,
-    name: "Maui — Kanaha",
-    country: "United States",
-    flag: "🇺🇸",
-    difficulty: "All levels",
-    windSeason: "May – Sep",
-    description: "Hawaii's most legendary kite spot. Kanaha Beach Park delivers powerful trade winds, warm water, and jaw-dropping scenery.",
-    tags: ["Waves", "Tropical", "Trade winds"],
-    image: "🌺",
-  },
-  {
-    id: 5,
-    name: "Dakhla",
-    country: "Morocco",
-    flag: "🇲🇦",
-    difficulty: "All levels",
-    windSeason: "Mar – Oct",
-    description: "A vast desert lagoon with perfectly flat water and near-constant trade winds. Paradise for freestyle and freeride riders alike.",
-    tags: ["Flat water", "Lagoon", "Wind reliable"],
-    image: "🏜️",
-  },
-  {
-    id: 6,
-    name: "Jericoacoara",
-    country: "Brazil",
-    flag: "🇧🇷",
-    difficulty: "All levels",
-    windSeason: "Jul – Jan",
-    description: "Brazil's most famous kite destination. Reliable winds, stunning dunes, and warm Atlantic waters create an unforgettable experience.",
-    tags: ["Flat water", "Dunes", "Warm water"],
-    image: "🌅",
-  },
-];
+import Link from "next/link";
+import { SPOTS } from "@/app/data/spots";
 
 const STATS = [
   { value: "500+", label: "Kite spots" },
@@ -101,7 +33,10 @@ function DifficultyBadge({ level }) {
 // ─── Spot card ──────────────────────────────────────────────────────────────
 function SpotCard({ spot }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group cursor-pointer">
+    <Link
+      href={`/spots/${spot.countrySlug}/${spot.spotSlug}`}
+      className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden group cursor-pointer"
+    >
       {/* Card header */}
       <div className="bg-gradient-to-br from-ocean-500 to-ocean-700 p-6 flex items-center justify-between">
         <span className="text-5xl">{spot.image}</span>
@@ -122,7 +57,7 @@ function SpotCard({ spot }) {
         </p>
 
         <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-3">
-          {spot.description}
+          {spot.shortDescription}
         </p>
 
         <div className="flex flex-wrap gap-1.5">
@@ -136,7 +71,7 @@ function SpotCard({ spot }) {
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -147,7 +82,7 @@ export default function Home() {
 
   const difficulties = ["All", "Beginner friendly", "All levels", "Intermediate+"];
 
-  const filtered = FEATURED_SPOTS.filter((spot) => {
+  const filtered = SPOTS.filter((spot) => {
     const matchSearch =
       spot.name.toLowerCase().includes(search.toLowerCase()) ||
       spot.country.toLowerCase().includes(search.toLowerCase());
@@ -169,6 +104,7 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#spots" className="hover:text-ocean-600 transition-colors">Spots</a>
+            <Link href="/spots" className="hover:text-ocean-600 transition-colors">All Spots</Link>
             <a href="#map" className="hover:text-ocean-600 transition-colors">Map <span className="text-xs bg-ocean-100 text-ocean-600 px-1.5 py-0.5 rounded-full ml-1">Soon</span></a>
             <a href="#" className="hover:text-ocean-600 transition-colors">Submit a Spot</a>
           </div>
@@ -283,6 +219,15 @@ export default function Home() {
             <p className="text-sm mt-1">Try a different country or spot name</p>
           </div>
         )}
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/spots"
+            className="inline-flex items-center gap-2 bg-ocean-600 hover:bg-ocean-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+          >
+            View All Spots →
+          </Link>
+        </div>
       </section>
 
       {/* ── CTA banner ──────────────────────────────────────────────────── */}
